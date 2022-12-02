@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		TatetiTDA tateti = new Tateti();
+		TatetiTDA tateti = new TatetiV2();
 		
 		tateti.Inicializar();
 		

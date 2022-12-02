@@ -2,12 +2,12 @@ package tpo;
 
 public class Tateti implements TatetiTDA {
 
-	private TurnoJugador turnoMaquina;
-	private int[][] tablero;
-	private EstadoPartida estado;
+	protected TurnoJugador turnoMaquina;
+	public int[][] tablero;
+	protected EstadoPartida estado;
 	private String X = "X";
 	private String O = "O";
-	private int TAM = 3;
+	protected int TAM = 3;
 
 	public void Inicializar() {
 		tablero = new int[TAM][TAM];
@@ -117,7 +117,7 @@ public class Tateti implements TatetiTDA {
 		return (posicionJugada - (fila * 3)) - 1;
 	}
 
-	private EstadoPartida getEstadoPartida() {
+	protected EstadoPartida getEstadoPartida() {
 		if (tablero[0][0] != -1 && tablero[0][0] == tablero[1][1] && tablero[0][0] == tablero[2][2]) {
 			return resolverEstado(tablero[0][0]);
 		}
@@ -154,11 +154,11 @@ public class Tateti implements TatetiTDA {
 		return true;
 	}
 
-	private boolean isPartidaFinalizada() {
+	protected boolean isPartidaFinalizada() {
 		return isTableroCompleto() || !getEstadoPartida().equals(EstadoPartida.SIN_GANADOR);
 	}
 
-	private void juegaLaMaquina() {
+	protected void juegaLaMaquina() {
 		if (!isPartidaFinalizada()) {
 			int fila = 0;
 			int columna = 0;
@@ -183,7 +183,7 @@ public class Tateti implements TatetiTDA {
 		estado = getEstadoPartida();
 	}
 
-	private int max() {
+	protected int max() {
 		if (isPartidaFinalizada()) {
 			if (!getEstadoPartida().equals(EstadoPartida.SIN_GANADOR))
 				return -1;
@@ -209,7 +209,7 @@ public class Tateti implements TatetiTDA {
 		return v;
 	}
 
-	private int min() {
+	protected int min() {
 		if (isPartidaFinalizada()) {
 
 			if (!getEstadoPartida().equals(EstadoPartida.SIN_GANADOR)) {
